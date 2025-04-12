@@ -32,13 +32,11 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
-import org.apache.avalon.framework.configuration.Configuration;
-import org.apache.avalon.framework.configuration.ConfigurationException;
-import org.apache.avalon.framework.configuration.DefaultConfigurationBuilder;
-import org.apache.fop.apps.FOUserAgent;
-import org.apache.fop.apps.Fop;
-import org.apache.fop.apps.FopFactory;
-import org.apache.fop.apps.FopFactoryBuilder;
+
+import org.apache.fop.configuration.Configuration;
+import org.apache.fop.configuration.ConfigurationException;
+import org.apache.fop.configuration.DefaultConfigurationBuilder;
+import org.apache.fop.apps.*;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -69,6 +67,7 @@ public class PDFPrinter {
             StreamSource source = new StreamSource(stream);
             StreamSource transformSource = new StreamSource(xsltfile);
             DefaultConfigurationBuilder cfgBuilder = new DefaultConfigurationBuilder();
+
             Configuration cfg = cfgBuilder.buildFromFile(new File("fopcfg.xml"));
 
             if (builder == null) {

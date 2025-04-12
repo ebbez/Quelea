@@ -3,7 +3,7 @@ package org.quelea.data.db;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.quelea.data.db.model.Song;
 
@@ -26,14 +26,14 @@ public class SongDao {
 
     @SuppressWarnings("unchecked")
     public List<Song> getSongs() {
-        Query getAllSongQuery = session.createQuery("from Song");
+        Query<Song> getAllSongQuery = session.createQuery("from Song");
         /*
          * We use an iterator here (rather then just doing getAllSongQuery.list()
          * because the latter will fall over if there are any corrupt songs in 
          * the database. This will force it to go through, and we can remove
          * the corrupt individual songs manually later.
          */
-        Iterator<Song> iter = getAllSongQuery.iterate();
+        Iterator<Song> iter = getAllSongQuery.getResultList().iterator();
         List<Song> ret = new ArrayList<>();
         while (iter.hasNext()) {
             ret.add(iter.next());

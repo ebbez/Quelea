@@ -4,7 +4,23 @@ module org.quelea {
     requires java.xml;
     requires java.desktop;
 
+    // LibreOffice
+    requires org.libreoffice.uno;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
+    requires org.apache.poi.ooxml.schemas;
+    requires org.apache.poi.scratchpad;
+
     requires java.logging;
+    requires org.apache.commons.io;
+
+    requires org.apache.httpcomponents.httpclient;
+    requires org.apache.httpcomponents.httpcore;
+    requires org.apache.xmlgraphics.fop.core;
+
+    requires jdk.httpserver;
+
+    requires maven.com.aparapi.core;
 
     requires org.apache.lucene.core;
     requires org.apache.lucene.analysis.common;
@@ -12,6 +28,14 @@ module org.quelea {
 
     requires org.hibernate.orm.core;
 
+    requires org.json;
+    requires com.google.gson;
+
+    // Quelea specifics (TBD)
+    // requires com.github.berry120.jopenlyrics
+    // requires org.quelea.planningcenter
+
+    // JavaFX packages
     requires javafx.base;
     requires javafx.controls;
     requires javafx.graphics;

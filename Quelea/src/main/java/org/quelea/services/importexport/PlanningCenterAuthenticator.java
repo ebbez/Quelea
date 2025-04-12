@@ -9,9 +9,9 @@ import java.time.Duration;
 import java.util.Optional;
 import java.util.function.Consumer;
 import javafx.application.Platform;
-import org.quelea.planningcenter.auth.AuthToken;
-import org.quelea.planningcenter.auth.ClientDetails;
-import org.quelea.planningcenter.auth.OAuthRedirectFlow;
+//import org.quelea.planningcenter.auth.AuthToken;
+//import org.quelea.planningcenter.auth.ClientDetails;
+//import org.quelea.planningcenter.auth.OAuthRedirectFlow;
 import org.quelea.services.utils.QueleaProperties;
 import org.quelea.utils.DesktopApi;
 
@@ -24,7 +24,7 @@ public class PlanningCenterAuthenticator {
     private static final String CLIENT_ID = "894f896c547874179ec8c68d997fd97f8b06af8bfced24b88ff29476c584f88a";
     private static final String CLIENT_SECRET = "7733176ce41c85cd82cfee297292ded6a99d5a57ae9cfa105159d1467d708cac"; //Doesn't need to be secret for desktop apps
     private static final String REDIRECT = "http://localhost:61937";
-    
+    /*
     public static ClientDetails getClientDetails() {
         return ClientDetails.builder()
                 .clientId(CLIENT_ID)
@@ -44,5 +44,5 @@ public class PlanningCenterAuthenticator {
             Platform.runLater(() -> callback.accept(opt));
         }).start();
     }
-
+    */
 }

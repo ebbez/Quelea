@@ -54,7 +54,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ooo.connector.BootstrapSocketConnector;
+/*import ooo.connector.BootstrapSocketConnector;*/
 import org.quelea.services.utils.QueleaProperties;
 import org.quelea.services.utils.Utils;
 
@@ -402,7 +402,7 @@ public class OOPresentation implements XEventListener {
          */
         private static XComponentContext connect(String path) throws Exception {
             File progPath = new File(path, "program");
-            xOfficeContext = BootstrapSocketConnector.bootstrap(progPath.getAbsolutePath());
+            /*xOfficeContext = BootstrapSocketConnector.bootstrap(progPath.getAbsolutePath());*/
             XComponentContext localContext = Bootstrap.createInitialComponentContext(null);
             XMultiComponentFactory localServiceManager = localContext.getServiceManager();
             XConnector connector = UnoRuntime.queryInterface(XConnector.class,
