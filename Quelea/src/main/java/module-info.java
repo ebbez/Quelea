@@ -7,16 +7,16 @@ module org.quelea {
     // LibreOffice
     requires org.libreoffice.uno;
     requires org.apache.poi.poi;
-    requires org.apache.poi.ooxml;
-    requires org.apache.poi.ooxml.schemas;
-    requires org.apache.poi.scratchpad;
+    //requires org.apache.poi.ooxml;
+    //requires org.apache.poi.ooxml.schemas;
+    //requires org.apache.poi.scratchpad;
 
     requires java.logging;
     requires org.apache.commons.io;
 
     requires org.apache.httpcomponents.httpclient;
     requires org.apache.httpcomponents.httpcore;
-    requires org.apache.xmlgraphics.fop.core;
+    //requires org.apache.xmlgraphics.fop.core;
 
     requires jdk.httpserver;
 
@@ -30,7 +30,7 @@ module org.quelea {
     requires com.google.gson;
 
     requires aparapi;
-    requires paradoxdriver;
+    //requires paradoxdriver;
 
     // TODO:
     // Quelea specifics
