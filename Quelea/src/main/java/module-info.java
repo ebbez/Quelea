@@ -20,8 +20,6 @@ module org.quelea {
 
     requires jdk.httpserver;
 
-    requires maven.com.aparapi.core;
-
     requires org.apache.lucene.core;
     requires org.apache.lucene.analysis.common;
     requires org.apache.lucene.queryparser;
@@ -31,9 +29,13 @@ module org.quelea {
     requires org.json;
     requires com.google.gson;
 
-    // Quelea specifics (TBD)
-    // requires com.github.berry120.jopenlyrics
-    // requires org.quelea.planningcenter
+    requires aparapi;
+    requires paradoxdriver;
+
+    // TODO:
+    // Quelea specifics
+    requires jopenlyrics;
+    requires planning.center;
 
     // JavaFX packages
     requires javafx.base;
