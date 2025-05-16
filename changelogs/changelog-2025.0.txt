@@ -1,0 +1,3 @@
+quelea (2025.0) stable
+
+  * Added resources to enable Flatpaks to be build

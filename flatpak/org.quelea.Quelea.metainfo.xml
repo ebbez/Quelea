@@ -52,6 +52,15 @@
   </recommends>
 
   <releases>
+      <release version="2025.0" date="2024-05-07">
+      <url type="details">https://github.com/quelea-projection/Quelea/blob/master/Quelea/changelogs/changelog-2025.0.txt</url>
+      <description>
+        <p>Quelea (2025.0) stable</p>
+          <ul>
+            <li>Added resources to enable Flatpaks to be build</li>
+          </ul>
+      </description>
+    </release>
     <release version="2024.1" date="2024-05-11">
       <url type="details">https://github.com/quelea-projection/Quelea/blob/master/Quelea/changelogs/changelog-2024.1.txt</url>
       <description>

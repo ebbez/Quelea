@@ -1,16 +1,13 @@
 name: Build CI release
 
-on:
+on: 
   push:
     branches:
-      - master
-    # paths:
-    #   - 'Quelea/**'
+      - modularize
 
-  pull_request:
-    branches:
-      - master
-
+permissions:
+  contents: write
+  
 jobs:
   release:
     runs-on: ubuntu-24.04
@@ -22,39 +19,18 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          java-package: 'jdk'
           distribution: 'temurin'
       
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
       
-      - name: Install Wine and Flatpak
+      - name: Install Flatpak
         run: |
-          sudo dpkg --add-architecture i386
           sudo apt update
-          sudo apt install wine wine32 wine64 flatpak flatpak-builder
-
-      - name: Setup Inno Setup cache
-        id: cache-innosetup
-        uses: actions/cache@v4
-        with:
-          path: ~/.wine/drive_c/Program Files (x86)/Inno Setup 6
-          key: ${{ runner.os }}-innosetup
-
-      - name: Install InnoSetup
-        if: ${{ ! steps.cache-innosetup.outputs.cache-hit }} # || true on Inno Setup update
-        env:
-          DISPLAY: :99
-          WINEDEBUG: -all,err+all
-          WINEARCH: win64
-        run: |
-          Xvfb $DISPLAY &
-          curl -SL "https://files.jrsoftware.org/is/6/innosetup-6.2.2.exe" -o is.exe
-          wine is.exe /SP- /VERYSILENT /ALLUSERS /SUPPRESSMSGBOXES
+          sudo apt install flatpak flatpak-builder
 
       - name: Build
         run: |
-          cd Quelea
           gradle -Dnightly=true -Dversionsuffix=CI-UNSTABLE clean dist
 
       - name: Cache Flatpak
@@ -70,14 +46,14 @@ jobs:
           flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
           cd flatpak
           flatpak-builder --force-clean --user --install-deps-from=flathub --repo=repo builddir org.quelea.Quelea.yml
-          flatpak build-bundle repo/ ../Quelea/dist/standalone/quelea-CI-UNSTABLE.flatpak org.quelea.Quelea --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
+          flatpak build-bundle repo/ ../dist/standalone/quelea-CI-UNSTABLE.flatpak org.quelea.Quelea --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
 
       - name: Upload binaries to release
         if: ${{ github.event_name == 'push' }}
         uses: softprops/action-gh-release@v2
         with:
-          files: Quelea/dist/standalone/*
-          tag_name: CI-RELEASE
+          files: dist/standalone/*
+          tag_name: MODULARIZATION-CI-RELEASE
           prerelease: true
           make_latest: false
           body: "**This is a CI Build, built from the latest copy of the source code automatically. 
@@ -90,4 +66,4 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: actions/upload-artifact@v4
         with:
-          path: Quelea/dist/standalone/
+          path: dist/standalone/

@@ -15,21 +15,23 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-Quelea/bundlejre/*
-Quelea/build/*
-Quelea/out-mac/*
-Quelea/dist/*
-Quelea/nbproject/*
-Quelea/.idea/*
-Quelea/output/*
-Quelea/.gradle/*
-Quelea/.nb-gradle/*
-Quelea/bin/*
-Quelea/private/*
+bundlejre/
+build/
+out-mac/
+dist/
+nbproject/
+.idea/
+output/
+.gradle/
+.nb-gradle/
+bin/
+private/
 
 flatpak/**/builddir
 flatpak/**/.flatpak-builder
 flatpak/**/repo
+
+*jre*.zip
 
 Thumbs.db
 gs.msi
